@@ -22,17 +22,17 @@
                 $.getJSON(
                     "https://api-adresse.data.gouv.fr/search/?q=" + request.term+"&limit=10",
                     function (data) {
-                        let arrayArtist = [];
+                        let arrayLieu = [];
                         let e = 0;
                         for (i = 0; i < data.features.length; ++i) {
                             // faire quelque chose avec `array[i]`
                             if (data.features[i].properties.label.toUpperCase().startsWith(request.term.toUpperCase())) {
-                                arrayArtist[e] = data.features[i].properties.label;
+                                arrayLieu[e] = data.features[i].properties.label;
                                 e++;
                             }
                         }
-                        arrayArtist = arrayArtist.slice(0, 15);
-                        response(arrayArtist);
+                        arrayLieu = arrayLieu.slice(0, 15);
+                        response(arrayLieu);
                     });
             };
 
