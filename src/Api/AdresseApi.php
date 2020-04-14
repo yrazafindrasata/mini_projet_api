@@ -3,7 +3,6 @@
 
 namespace App\Api;
 
-
 use GuzzleHttp\Client;
 
 class AdresseApi

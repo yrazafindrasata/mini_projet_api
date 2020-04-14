@@ -71,7 +71,8 @@ class ApiController extends AbstractController
         $coordinates = $features['features'][0]['geometry']['coordinates'];
         $meteo = $meteoApi->getMeteo($coordinates);
         return $this->render('result.html.twig',[
-            'meteo' => $meteo
+            'meteo' => $meteo,
+            'place' => $rue
         ]);
     }
 }

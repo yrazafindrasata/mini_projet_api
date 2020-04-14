@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Welcome!{% endblock %}</title>
-
     {% block stylesheets %}{% endblock %}
 </head>
 <body>
@@ -21,7 +20,7 @@
         $(function () {
             var getData = function (request, response) {
                 $.getJSON(
-                    "https://api-adresse.data.gouv.fr/search/?q=" + request.term,
+                    "https://api-adresse.data.gouv.fr/search/?q=" + request.term+"&limit=10",
                     function (data) {
                         let arrayArtist = [];
                         let e = 0;
@@ -43,7 +42,6 @@
             };
 
             $("#search_form").autocomplete({
-                maxResults: 10,
                 source: getData,
                 select: selectItem,
                 minLength: 4,
