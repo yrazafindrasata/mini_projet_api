@@ -10,7 +10,7 @@ composer install
 ```
 
 #### routes
-```bash
-/region -> insee
-/search -> adresse/meteo
+```
+127.0.01/region -> insee
+127.0.01/search -> adresse/meteo
 ```
