@@ -11,6 +11,6 @@ composer install
 
 #### routes
 ```
-127.0.01/region -> insee
-127.0.01/search -> adresse/meteo
+127.0.0.1/region -> insee
+127.0.0.1/search -> adresse/meteo
 ```
