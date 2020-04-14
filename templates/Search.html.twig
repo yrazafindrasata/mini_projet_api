@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+{% block body %}
+    <form action="result" method="get">
+        <input type="text" name="search_form" id="search_form">
+        <button type="submit">Send</button>
+    </form>
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script>
+        $(function () {
+            var getData = function (request, response) {
+                $.getJSON(
+                    "https://api-adresse.data.gouv.fr/search/?q=" + request.term,
+                    function (data) {
+                        let arrayArtist = [];
+                        let e = 0;
+                        for (i = 0; i < data.features.length; ++i) {
+                            // faire quelque chose avec `array[i]`
+                            if (data.features[i].properties.label.toUpperCase().startsWith(request.term.toUpperCase())) {
+                                arrayArtist[e] = data.features[i].properties.label;
+                                e++;
+                            }
+                        }
+                        arrayArtist = arrayArtist.slice(0, 15);
+                        response(arrayArtist);
+                    });
+            };
+
+            var selectItem = function (event, ui) {
+                $("#search_form").val(ui.item.value);
+                return false;
+            };
+
+            $("#search_form").autocomplete({
+                maxResults: 10,
+                source: getData,
+                select: selectItem,
+                minLength: 4,
+            });
+        });
+    </script>
+
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        {% block body %}
+            <table class="table">
+            <tbody>
+            <tr>
+                <th>Code</th>
+                <td>{{ region.code }}</td>
+            </tr>
+            <tr>
+                <th>Uri</th>
+                <td>{{ region.uri }}</td>
+            </tr>
+            <tr>
+                <th>intitule</th>
+                <td>{{ region.intitule }}</td>
+            </tr>
+            </tbody>
+            </table>{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
